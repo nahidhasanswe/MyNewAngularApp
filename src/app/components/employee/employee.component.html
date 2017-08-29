@@ -1,0 +1,59 @@
+
+<section class="content">
+    <h3>Employee List</h3>
+    <br/>
+    <div style="background-color: white !important">
+        <div class="row">
+            <div class="col-sm-12" style="margin-top: 5px; margin-bottom: 5px">
+                <md-input-container>
+                        <input mdInput placeholder="Search Name" [(ngModel)]="searchName">
+                </md-input-container>
+                <md-input-container>
+                        <input mdInput placeholder="Search Section" [(ngModel)]="searchSection">
+                </md-input-container>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table" id="myLeave">
+                <thead>
+                    <tr>
+                        <th><b>#</b></th>
+                        <th><b>Employee Id</b></th>
+                        <th><b>Employee Name</b></th>
+                        <th><b>Designation</b></th>
+                        <th><b>Section</b></th>
+                        <th><b>Department</b></th>
+                        <th><b>Report To</b></th>
+                        <th><b>Joining Date</b></th>
+                        <th><b>Locatoin</b></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of EmployeeList|filter:{EmployeeName:searchName,Section:searchSection}| paginate:config">
+                        <td>{{1}}</td>
+                        <td>{{employee.EmployeeId}}</td>
+                        <td>{{employee.EmployeeName}}</td>
+                        <td>{{employee.Designation}}</td>
+                        <td>{{employee.Section}}</td>
+                        <td>{{employee.Department}}</td>
+                        <td>{{employee.ReportToName}}</td>
+                        <td>{{employee.JoiningDate|date: 'dd/MM/yyyy'}}</td>
+                        <td>{{employee.Location}}</td>
+                        <td>
+                            <div layout="row" layout-align="start center">
+                                <button md-mini-fab md-raised color="primary"><md-icon>check</md-icon></button>
+                                <button md-mini-fab flex><md-icon>check</md-icon></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-custom-page [id]="config.id" [config]="config"></app-custom-page>
+            <br/>
+        </div>
+    </div>
+    
+</section>
+
+

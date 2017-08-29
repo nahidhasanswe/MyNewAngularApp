@@ -1,0 +1,23 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<div class="wrapper" *ngIf="!isLogged">
+        <form class="form-signin" [formGroup]="formdata" (ngSubmit)="loginSystem(formdata.value,formdata.valid)">       
+          <h2 class="form-signin-heading">Please login</h2>
+
+          <md-input-container style="width:100%">
+                <input mdInput placeholder="Employee Id" formControlName="username">
+                <md-error *ngIf="formdata.controls['username'].errors?.required">
+                        Username is <strong>required</strong>
+                </md-error>
+          </md-input-container>
+          <br/>
+          <md-input-container style="width:100%">
+                <input mdInput type="password" placeholder="Password" formControlName="password" >
+                <md-error *ngIf="formdata.controls['password'].errors?.required">
+                        Password is <strong>required</strong>
+                </md-error>
+          </md-input-container> 
+          <br/>
+          <br/>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button> 
+        </form>
+</div>
